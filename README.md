@@ -6,9 +6,9 @@ This spring training covers Spring Web, Spring Data and Spring test. It also cov
 
 You work as a developer in the field of industrial internet of thing (IIoT). You are responsible for creating a little proof of concept built around AWS IoT.
 
-The goal of this PoC is to be able to push some data (configurations) to a device from a Spring Boot application. The firmware developers already did part of the work and the device is ready. The remaining part is the Cloud part.
+The goal of this PoC is to be able to push some data (configurations) to a device from a Spring Boot application. The firmware developers already did part of their work and provided you a device simulator mocking the device behavior.
 
-Along different tasks, your job will be to create a secured api that communicates with AWS and that stores data.
+Along different tasks, your job will be to create an api that communicates with AWS and that stores data.
 
 ---
 
@@ -91,9 +91,50 @@ The firmware team just released a little python script simulating a device.
 * [Set up you AWS account](aws/README.md);
 * See [Device readme](device/README.md) to launch the IoT Device (Thing in AWS).
 
+---
+
 ### Apply a configuration to your device
 
 It's time to integrate your microservice with AWS IoT.
 
 * Install and set up AWS Toolkit, the IntelliJ extension
+* Set up your run configurations as described in the picture
 
+![Run configuration](image/run_configs.png)
+
+Create an endpoint that applies a configuration to a device by creating a job. This endpoint takes a configuration ID and a thing name as parameters.
+
+Behind this endpoint, you need to get the full configuration from the database and to send it to the device using a Job.
+
+Useful links to start:
+* [AWS IoT examples using SDK for Java 2.x](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/java_iot_code_examples.html)
+
+#### Extension: Domain layer & Hexagonal architecture
+
+From now, you should have multiple object definition for a configuration: the DTO, the Entity and certainly another DTO for the communication with AWS Jobs.
+
+Having a microservice using multiple infrastructure dependencies (data persistence + AWS layer) can become quite complex to manage and maintain.
+
+For this extension, apply the Hexagonal architecture to your microservice. Your service will conceptually be split in 4 layers:
+* Inbound (Your controllers)
+* Domain (The domain logic)
+* Persistence (The repository)
+* Client (The AWS clients)
+
+---
+
+### Get the applied config
+
+When receiving a configuration, the device applies it and then updates its shadow with the configuration ID.
+
+To be complete, your microservice needs to expose an endpoint getting the actual configuration using the configuration ID coming from the shadow.
+
+### General extensions
+
+* Implement spring security with two authorities, READ and WRITE access;
+* Return the date when the config has been applied using the shadow timestamp;
+* Log the time taken by AWS to response to each of your request using Spring AOP
+* Configure two ways to launch your service using spring profiles:
+  * Profile 'dev' saves your data in a file;
+  * Profile 'local' does not save it.
+* Explore the transactional capabilities of Spring Data.
