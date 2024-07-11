@@ -2,3 +2,4 @@
 device/Pipfile.lock
 device/Pipfile
 device/keys/*
+db.*

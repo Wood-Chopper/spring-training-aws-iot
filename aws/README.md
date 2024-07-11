@@ -27,7 +27,7 @@ Your password will be provided separately by your teacher.
 Go to [Device's Readme](../device/README.md) and follow the readme.
 
 The last log should be:
-```shell
+```text
 Request to start next job was accepted, but there are no jobs to be done. Waiting for further jobs...
 ```
 
