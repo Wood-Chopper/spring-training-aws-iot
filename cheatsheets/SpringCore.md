@@ -2,9 +2,7 @@
 
 ## Dependency injection
 
-### Spring Native
-
-Injection by constructor.
+### By constructor
 
 ```java
 @Service
@@ -72,8 +70,8 @@ If the class needs other dependencies:
 public class SomeConfiguration {
 
 	@Bean
-	public TaskManagerService taskManagerService(Repository repository) {
-		return new TaskManagerService(repository);
+	public SomeService myService(Repository repository) {
+		return new SomeService(repository);
 	}
 }
 ```

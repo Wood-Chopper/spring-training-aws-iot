@@ -38,7 +38,7 @@ This object needs to be a Java object. The endpoint returns this configuration.
 
 ---
 
-### Send a configuration to you service
+### Send a configuration to your service
 
 From now, you have an endpoint that returns a data transfert object (DTO).
 
@@ -106,7 +106,7 @@ Create an endpoint that applies a configuration to a device by creating a job. T
 
 Behind this endpoint, you need to get the full configuration from the database and to send it to the device using a Job.
 
-Useful links to start:
+Useful link to start:
 * [AWS IoT examples using SDK for Java 2.x](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/java_iot_code_examples.html)
 
 #### Extension: Domain layer & Hexagonal architecture
@@ -129,12 +129,12 @@ When receiving a configuration, the device applies it and then updates its shado
 
 To be complete, your microservice needs to expose an endpoint getting the actual configuration using the configuration ID coming from the shadow.
 
-### General extensions
+### Other extensions
 
 * Implement spring security with two authorities, READ and WRITE access;
 * Return the date when the config has been applied using the shadow timestamp;
 * Log the time taken by AWS to response to each of your request using Spring AOP
 * Configure two ways to launch your service using spring profiles:
-  * Profile 'dev' saves your data in a file;
+  * Profile 'dev' saves your data into a file;
   * Profile 'local' does not save it.
 * Explore the transactional capabilities of Spring Data.
