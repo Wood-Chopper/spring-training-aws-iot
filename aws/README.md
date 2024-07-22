@@ -39,7 +39,7 @@ Request to start next job was accepted, but there are no jobs to be done. Waitin
 ### Steps
 
 1. Go to [IAM User list](https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/users)
-2. Select you user
+2. Select you userDto
 3. Click **Create access key**
 4. Choose **Command Line Interface (CLI)**
 5. Confirm the checkbox and click **Next**

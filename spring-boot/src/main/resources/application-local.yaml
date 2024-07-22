@@ -1,0 +1,4 @@
+config:
+  aws:
+    account: 123456789
+    region: eu-central-1

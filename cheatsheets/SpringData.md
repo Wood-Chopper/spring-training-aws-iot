@@ -49,7 +49,7 @@ public class TaskListEntity {
 
     private String name;
 
-    @OneToMany(mappedBy = "taskList")
+    @OneToMany(mappedBy = "taskList", cascade = CascadeType.ALL)
     @OrderBy("creationDate")
     List<ItemEntity> items;
 

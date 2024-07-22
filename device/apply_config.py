@@ -226,8 +226,6 @@ def update_shadow(job_document):
     # any "response" messages received on the /accepted and /rejected topics
     token = str(uuid4())
     configuration_id = job_document["id"]
-    if configuration_id < 0:
-        raise Exception("Configuration ID out of range")
     request = iotshadow.UpdateNamedShadowRequest(
         thing_name=shadow_thing_name,
         shadow_name="configuration",

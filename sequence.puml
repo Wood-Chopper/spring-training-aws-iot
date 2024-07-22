@@ -1,0 +1,11 @@
+@startuml
+
+participant User
+
+participant "Configuration Service" as Config
+
+User -> Config: getConfiguration()
+
+Config --> User: Configuration{}
+
+@enduml

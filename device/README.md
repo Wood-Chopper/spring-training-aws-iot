@@ -28,3 +28,8 @@ python3 apply_config.py --endpoint a27jlub28fxh0a-ats.iot.us-east-1.amazonaws.co
 ```
 
 More examples here: https://github.com/aws/aws-iot-device-sdk-python-v2/tree/main
+
+
+
+
+python3 apply_config.py --endpoint a27jlub28fxh0a-ats.iot.us-east-1.amazonaws.com --ca_file keys/AmazonRootCA1.pem --cert keys/JeromeDevice-certificate.pem.crt --key keys/JeromeDevice-private.pem.key --thing_name JeromeDevice

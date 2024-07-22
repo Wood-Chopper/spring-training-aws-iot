@@ -5,7 +5,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
 
     properties:
@@ -21,3 +21,29 @@ spring:
   h2:
     console:
       enabled: true
+
+config:
+  aws:
+    account: 459293086294
+    region: us-east-1
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+application:
+  users:
+    - username: admin
+      password: admin
+      authorities: READ,WRITE
+    - username: user
+      password: user
+      authorities: READ
+    - username: nope
+      password: nope
+
+#RBAC = Role based <- this for the example
+#ReBAC = Relation based
+#ABAC = Attribute based

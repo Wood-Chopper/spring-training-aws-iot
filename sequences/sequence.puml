@@ -1,0 +1,42 @@
+@startuml
+
+autonumber
+
+
+
+User -> ConfigController: POST configuration{}
+
+note over ConfigController: Validates the DTO
+
+ConfigController -> ConfigService: configuration
+
+note over ConfigService: Creates the UUID
+
+
+ConfigService -> DB: Insert Configuration
+
+DB --> ConfigService
+
+ConfigService --> ConfigController
+
+ConfigController --> User
+
+User -> ConfigController: Apply Config
+
+ConfigController -> ConfigService: Apply configuration
+
+ConfigService -> DB: getConfiguration
+
+DB --> ConfigService
+
+ConfigService -> AWS: Create JOB
+
+AWS --> ConfigService
+
+ConfigService --> ConfigController
+
+ConfigController --> User: Pending
+
+
+
+@enduml
